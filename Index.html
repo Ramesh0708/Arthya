@@ -1,0 +1,124 @@
+<!DOCTYPE html><html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Arthya — Where Value Finds Purpose</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background-color: #F9FAFB;
+      color: #1E1E1E;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      text-align: center;
+    }
+    h1 {
+      font-family: 'Poppins', sans-serif;
+      font-size: 2.8rem;
+      color: #3E54AC;
+      margin-bottom: 0.5rem;
+    }
+    p {
+      font-size: 1.1rem;
+      color: #333;
+      margin-bottom: 2rem;
+    }
+    form {
+      background: #fff;
+      padding: 1.5rem 2rem;
+      border-radius: 1rem;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+      max-width: 400px;
+      width: 100%;
+    }
+    input {
+      width: 100%;
+      padding: 0.8rem;
+      margin-bottom: 1rem;
+      border-radius: 0.5rem;
+      border: 1px solid #ccc;
+      font-size: 1rem;
+    }
+    button {
+      background-color: #3E54AC;
+      color: #fff;
+      border: none;
+      padding: 0.8rem 1.5rem;
+      border-radius: 0.5rem;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    button:hover {
+      background-color: #2E3D8A;
+    }
+    .thankyou-overlay {
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(255,255,255,0.8);
+      backdrop-filter: blur(6px);
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+    }
+    .thankyou-box {
+      background: white;
+      border-radius: 1rem;
+      padding: 2rem 3rem;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+      text-align: center;
+      animation: fadeIn 0.4s ease;
+    }
+    .thankyou-box h2 {
+      color: #3E54AC;
+      margin-bottom: 0.5rem;
+    }
+    .thankyou-box p {
+      color: #333;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.9); }
+      to { opacity: 1; transform: scale(1); }
+    }
+  </style>
+</head>
+<body>
+  <h1>Arthya</h1>
+  <p>Where Value Finds Purpose</p>  <form name="contact" method="POST" data-netlify="true" id="notifyForm">
+    <input type="text" name="name" placeholder="Your Name" required>
+    <input type="email" name="email" placeholder="Your Email" required>
+    <button type="submit">Notify Me</button>
+  </form>  <div class="thankyou-overlay" id="thankYou">
+    <div class="thankyou-box">
+      <h2>Thank You! 🎉</h2>
+      <p>You're now part of Arthya’s early circle.<br>Stay tuned for what’s next ✨</p>
+    </div>
+  </div>  <script>
+    const form = document.getElementById('notifyForm');
+    const overlay = document.getElementById('thankYou');
+
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      const data = new FormData(form);
+      fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams(data).toString()
+      }).then(() => {
+        overlay.style.display = 'flex';
+        form.reset();
+      }).catch((error) => alert(error));
+    });
+
+    overlay.addEventListener('click', () => {
+      overlay.style.display = 'none';
+    });
+  </script></body>
+</html>
