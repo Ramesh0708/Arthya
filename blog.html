@@ -1,36 +1,39 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
   <meta charset="UTF-8">
   <title>Arthya Blog</title>
   <link rel="stylesheet" href="assets/styles.css">
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 </head>
 
 <body>
 
-<nav class="navbar">
-<a href="/" class="logo">
-  <span>Arthya</span>
-</div>
-  <div class="nav-links">
-    <a href="index.html">Home</a>
-  </div>
-</nav>
-
-<section class="hero">
-  <div class="hero-content">
-    <h1>Insights & Card Benefits</h1>
-
-    <div class="blog-card">
-  <h2>How I Saved ₹1,500 at Hush Puppies</h2>
-  <p>Real story about uncovering hidden credit card benefits.</p>
-  <a href="blog/hush-puppies.html" class="blog-link">
-    Read Article →
+<header class="navbar">
+  <a href="/" class="logo">
+    <img src="assets/logo.png" alt="Arthya Logo">
+    <span>Arthya</span>
   </a>
-</div>
+  <nav>
+    <a href="/">Home</a>
+  </nav>
+</header>
 
+<section class="section">
+  <div class="container">
+    <h2>Blog</h2>
+    <div id="posts"></div>
   </div>
 </section>
+
+<script>
+fetch('blog/')
+  .then(response => response.text())
+  .then(data => {
+    document.getElementById("posts").innerHTML =
+      "<p>Blog posts are managed via CMS.</p>";
+  });
+</script>
 
 </body>
 </html>
