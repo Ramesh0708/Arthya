@@ -101,14 +101,15 @@ background:
   display: flex;
   align-items: center;
   gap: 10px;
-  font-size: 20px;
+  font-size: 18px;
   font-weight: 600;
   color: #7c8cff;
 }
 
 .logo img {
-  height: 28px;
-  width: 28px;
+  height: 32px;
+  width: auto;
+  object-fit: contain;
 }
 
 .blog-card {
@@ -128,6 +129,55 @@ background:
 }
 .blog-link:hover {
   color: white;
+}
+
+.section {
+  padding: 100px 20px;
+  text-align: center;
+}
+
+.container {
+  max-width: 900px;
+  margin: auto;
+}
+
+.section h2 {
+  font-size: 36px;
+  margin-bottom: 20px;
+}
+
+.section-text {
+  color: #aaa;
+  font-size: 18px;
+  max-width: 700px;
+  margin: auto;
+}
+
+.highlight {
+  background: rgba(255,255,255,0.03);
+  backdrop-filter: blur(20px);
+}
+
+.features {
+  display: flex;
+  gap: 30px;
+  margin-top: 60px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.feature-card {
+  background: rgba(255,255,255,0.04);
+  padding: 40px;
+  border-radius: 20px;
+  width: 260px;
+  border: 1px solid rgba(255,255,255,0.08);
+  transition: 0.3s ease;
+}
+
+.feature-card:hover {
+  transform: translateY(-8px);
+  border-color: rgba(124,140,255,0.5);
 }
 
 
