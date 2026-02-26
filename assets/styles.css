@@ -1,7 +1,10 @@
 body {
   margin: 0;
   font-family: 'Inter', sans-serif;
-  background: radial-gradient(circle at top, #111827, #000000);
+background:
+  radial-gradient(600px circle at 50% -10%, rgba(124,140,255,0.25), transparent 40%),
+  radial-gradient(800px circle at 90% 10%, rgba(99,102,241,0.15), transparent 40%),
+  #05070f;
   color: white;
 }
 
@@ -43,8 +46,12 @@ body {
 }
 
 .hero h1 {
-  font-size: 48px;
-  margin-bottom: 20px;
+  font-size: 56px;
+  font-weight: 700;
+  letter-spacing: -1px;
+  background: linear-gradient(90deg, #ffffff, #9ca3ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .hero p {
@@ -69,22 +76,59 @@ body {
 }
 
 .email-form button {
-  padding: 14px;
-  border-radius: 8px;
+  padding: 16px;
+  border-radius: 12px;
   border: none;
-  background: #6366f1;
+  background: linear-gradient(135deg, #6366f1, #8b5cf6);
   color: white;
   font-weight: 600;
   cursor: pointer;
-  transition: 0.3s;
+  transition: all 0.3s ease;
+  box-shadow: 0 10px 30px rgba(99,102,241,0.4);
 }
 
 .email-form button:hover {
-  background: #4f46e5;
+  transform: translateY(-2px);
+  box-shadow: 0 15px 40px rgba(99,102,241,0.6);
 }
 
 .subtext {
   margin-top: 15px;
   font-size: 14px;
   color: #666;
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 20px;
+  font-weight: 600;
+  color: #7c8cff;
+}
+
+.logo img {
+  height: 28px;
+  width: 28px;
+}
+
+.blog-card {
+  background: rgba(255,255,255,0.04);
+  padding: 60px;
+  border-radius: 20px;
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255,255,255,0.08);
+  max-width: 800px;
+  margin: auto;
+}
+
+.blog-link {
+  color: #8b5cf6;
+  text-decoration: none;
+  font-weight: 500;
+}
+.blog-link:hover {
+  color: white;
+}
+
+
 }
