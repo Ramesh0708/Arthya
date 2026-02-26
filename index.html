@@ -1,86 +1,110 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<link rel="icon" type="image/png" href="assets/faviicon.png" />
+  <meta charset="UTF-8">
   <title>Arthya — Where Value Finds Purpose</title>
-  <link rel="stylesheet" href="assets/styles.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="assets/styles.css">
+  <link rel="icon" href="assets/logo.png">
 </head>
 
 <body>
 
-  <nav class="navbar">
-<div class="logo">
-  <span>Arthya</span>
-</div>
-    <div class="nav-links">
-      <a href="index.html">Home</a>
-      <a href="blog.html">Blog</a>
-    </div>
+<div class="mouse-glow"></div>
+
+<div class="orb orb1"></div>
+<div class="orb orb2"></div>
+<div class="orb orb3"></div>
+
+<header class="navbar">
+  <a href="/" class="logo">
+    <img src="assets/logo.png" alt="Arthya Logo">
+    <span>Arthya</span>
+  </a>
+  <nav>
+    <a href="/">Home</a>
+    <a href="blog.html">Blog</a>
   </nav>
+</header>
 
-  <section class="hero">
-    <div class="hero-content">
-      <h1>Where Value Finds Purpose</h1>
-      <p>
-        Discover hidden credit card benefits and maximize every swipe.
-      </p>
+<section class="hero">
+  <div class="hero-content">
+    <h1>Where Value Finds Purpose</h1>
+    <p>Discover hidden credit card benefits and maximize every swipe.</p>
 
-      <form name="early-access" method="POST" data-netlify="true" class="email-form">
-        <input type="hidden" name="form-name" value="early-access" />
-        <input type="text" name="name" placeholder="Your Name" required />
-        <input type="email" name="email" placeholder="Your Email" required />
-        <button type="submit">Get Early Access</button>
-      </form>
+    <form name="early-access" method="POST" data-netlify="true" class="email-form">
+      <input type="hidden" name="form-name" value="early-access">
+      <input type="text" name="name" placeholder="Your Name" required>
+      <input type="email" name="email" placeholder="Your Email" required>
+      <button type="submit" class="cta">Get Early Access</button>
+    </form>
 
-      <p class="subtext">No spam. Just curated value.</p>
-    </div>
-  </section>
+    <p class="subtext">No spam. Just curated value.</p>
+  </div>
+</section>
+
+<div class="divider"></div>
 
 <section class="section">
   <div class="container">
     <h2>Most People Leave Money on the Table</h2>
     <p class="section-text">
-      Banks offer hidden discounts, merchant deals, and partner benefits —
-      but they’re scattered, hard to track, and rarely used.
+      Banks offer hidden discounts and partner deals —
+      but they’re scattered and rarely used.
     </p>
   </div>
 </section>
 
 <section class="section highlight">
   <div class="container">
-    <h2>Arthya Curates What You Already Own</h2>
-    <p class="section-text">
-      We help you discover active card offers, seasonal benefits,
-      and hidden perks across your credit & debit cards —
-      so every swipe works smarter.
-    </p>
-  </div>
-</section>
-
-<section class="section">
-  <div class="container">
     <h2>How It Works</h2>
 
     <div class="features">
       <div class="feature-card">
-        <h3>1. We Track Offers</h3>
+        <h3>🔍 We Track Offers</h3>
         <p>Monitor bank & merchant promotions in one place.</p>
       </div>
 
       <div class="feature-card">
-        <h3>2. We Curate</h3>
-        <p>No spam. Only real, high-value benefits.</p>
+        <h3>💎 We Curate</h3>
+        <p>No spam. Only real high-value benefits.</p>
       </div>
 
       <div class="feature-card">
-        <h3>3. You Save</h3>
+        <h3>⚡ You Save</h3>
         <p>Maximize value from cards you already own.</p>
       </div>
     </div>
   </div>
 </section>
+
+<div class="divider"></div>
+
+<section class="section trust">
+  <h2>Launching Soon for Early Members</h2>
+  <p class="section-text">
+    Join the early circle. Get curated insights before public rollout.
+  </p>
+</section>
+
+<section class="section founder">
+  <div class="container">
+    <h2>The Idea Behind Arthya</h2>
+    <p class="section-text">
+      It started with a ₹1,500 discount at Hush Puppies.
+      I realized most people don’t use benefits they already have.
+      Arthya exists to fix that.
+    </p>
+  </div>
+</section>
+
+<script>
+const glow = document.querySelector(".mouse-glow");
+document.addEventListener("mousemove", e => {
+  glow.style.left = e.clientX + "px";
+  glow.style.top = e.clientY + "px";
+});
+</script>
 
 </body>
 </html>
