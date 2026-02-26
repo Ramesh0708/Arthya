@@ -4,34 +4,98 @@
   <meta charset="UTF-8">
   <title>Arthya Blog</title>
   <link rel="stylesheet" href="assets/styles.css">
-  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+
+  <style>
+    body {
+      background: #070b1a;
+      color: #fff;
+      font-family: system-ui, -apple-system, sans-serif;
+    }
+
+    .blog-container {
+      max-width: 900px;
+      margin: 120px auto;
+      padding: 20px;
+    }
+
+    .blog-card {
+      background: rgba(255,255,255,0.05);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 20px;
+      padding: 25px;
+      margin-bottom: 25px;
+      transition: 0.3s ease;
+    }
+
+    .blog-card:hover {
+      transform: translateY(-6px);
+      border-color: #6c63ff;
+    }
+
+    .blog-card h3 {
+      margin-bottom: 10px;
+    }
+
+    .blog-card p {
+      opacity: 0.7;
+    }
+
+    .blog-card a {
+      display: inline-block;
+      margin-top: 12px;
+      color: #6c63ff;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .loading {
+      text-align: center;
+      opacity: 0.6;
+    }
+  </style>
 </head>
 
 <body>
 
 <header class="navbar">
-  <a href="/" class="logo">
-    <alt="Arthya Logo">
-    <span>Arthya</span>
-  </a>
+  <a href="index.html" class="logo">Arthya</a>
   <nav>
-    <a href="/">Home</a>
+    <a href="index.html">Home</a>
   </nav>
 </header>
 
-<section class="section">
-  <div class="container">
-    <h2>Blog</h2>
-    <div id="posts"></div>
-  </div>
-</section>
+<div class="blog-container">
+  <h1 style="text-align:center; margin-bottom:50px;">Latest Articles</h1>
+  <div id="posts" class="loading">Loading articles...</div>
+</div>
 
 <script>
-fetch('blog/')
-  .then(response => response.text())
+const rssUrl = "https://api.rss2json.com/v1/api.json?rss_url=https://medium.com/feed/@rameshchoudhary8675";
+
+fetch(rssUrl)
+  .then(res => res.json())
   .then(data => {
+    const container = document.getElementById("posts");
+    container.innerHTML = "";
+
+    data.items.slice(0, 6).forEach(post => {
+      const div = document.createElement("div");
+      div.className = "blog-card";
+
+      div.innerHTML = `
+        <h3>${post.title}</h3>
+        <p>${post.pubDate.split(" ")[0]}</p>
+        <p>${post.description.replace(/<[^>]+>/g, '').substring(0, 150)}...</p>
+        <a href="${post.link}" target="_blank">Read on Medium →</a>
+      `;
+
+      container.appendChild(div);
+    });
+  })
+  .catch(() => {
     document.getElementById("posts").innerHTML =
-      "<p>Blog posts are managed via CMS.</p>";
+      "Unable to load Medium posts.";
   });
 </script>
 
