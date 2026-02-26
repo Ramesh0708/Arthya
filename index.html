@@ -1,105 +1,269 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
   <meta charset="UTF-8">
   <title>Arthya — Where Value Finds Purpose</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="assets/styles.css">
-  <link rel="icon" href="assets/faviicon.png">
 
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, sans-serif;
+      color: #fff;
+      background:
+        radial-gradient(circle at 20% 30%, rgba(108,99,255,0.15), transparent 40%),
+        radial-gradient(circle at 80% 70%, rgba(255,215,0,0.12), transparent 40%),
+        #070b1a;
+      overflow-x: hidden;
+    }
+
+    /* Sticky Glass Navbar */
+    header {
+      position: fixed;
+      width: 100%;
+      top: 0;
+      backdrop-filter: blur(20px);
+      background: rgba(10,12,25,0.6);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      padding: 20px 60px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 10;
+    }
+
+    header a {
+      color: #a5a1ff;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 18px;
+    }
+
+    header nav a {
+      margin-left: 30px;
+      color: #ddd;
+      font-size: 14px;
+    }
+
+    /* Hero Section */
+    .hero {
+      padding: 160px 60px 100px 60px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 60px;
+      flex-wrap: wrap;
+    }
+
+    .hero-text {
+      max-width: 600px;
+    }
+
+    .hero-text h1 {
+      font-size: 48px;
+      line-height: 1.2;
+      margin-bottom: 20px;
+    }
+
+    .hero-text p {
+      font-size: 18px;
+      opacity: 0.8;
+      line-height: 1.6;
+    }
+
+    /* Signup Card */
+    .hero-card {
+      background: rgba(255,255,255,0.06);
+      backdrop-filter: blur(25px);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 24px;
+      padding: 40px;
+      width: 350px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+      transition: 0.3s ease;
+    }
+
+    .hero-card:hover {
+      transform: translateY(-6px);
+    }
+
+    .hero-card h2 {
+      margin-bottom: 20px;
+      font-size: 22px;
+    }
+
+    .hero-card input {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 15px;
+      border-radius: 8px;
+      border: none;
+      outline: none;
+    }
+
+    .hero-card button {
+      width: 100%;
+      padding: 12px;
+      border-radius: 8px;
+      border: none;
+      background: linear-gradient(90deg, #6c63ff, #8f8aff);
+      color: white;
+      font-weight: 600;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* CTA shimmer */
+    .hero-card button::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(120deg, transparent, rgba(255,255,255,0.4), transparent);
+      transition: 0.6s;
+    }
+
+    .hero-card button:hover::after {
+      left: 100%;
+    }
+
+    .hero-card small {
+      opacity: 0.6;
+    }
+
+    /* Trust Section */
+    .trust {
+      text-align: center;
+      padding: 80px 20px;
+      opacity: 0.85;
+    }
+
+    .trust h3 {
+      margin-bottom: 15px;
+      font-size: 24px;
+    }
+
+    .trust p {
+      max-width: 600px;
+      margin: auto;
+      line-height: 1.6;
+      opacity: 0.8;
+    }
+
+    /* Founder Section */
+    .founder {
+      padding: 100px 60px;
+      display: flex;
+      justify-content: center;
+      text-align: center;
+    }
+
+    .founder-box {
+      max-width: 700px;
+      background: rgba(255,255,255,0.05);
+      border-radius: 20px;
+      padding: 50px;
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .founder-box h3 {
+      margin-bottom: 20px;
+      font-size: 24px;
+    }
+
+    .founder-box p {
+      opacity: 0.8;
+      line-height: 1.6;
+    }
+
+    footer {
+      text-align: center;
+      padding: 40px;
+      opacity: 0.6;
+      font-size: 14px;
+    }
+
+    /* Smaller Mouse Glow */
+    .glow {
+      position: fixed;
+      width: 120px;
+      height: 120px;
+      background: radial-gradient(circle, rgba(108,99,255,0.35) 0%, rgba(108,99,255,0.05) 60%, transparent 80%);
+      border-radius: 50%;
+      pointer-events: none;
+      transform: translate(-50%, -50%);
+      z-index: 0;
+      transition: 0.08s linear;
+    }
+  </style>
 </head>
 
 <body>
 
-<div class="mouse-glow"></div>
-
-<div class="orb orb1"></div>
-<div class="orb orb2"></div>
-<div class="orb orb3"></div>
-
-<header class="navbar">
-  <a href="/" class="logo">
-    <span>Arthya</span>
-  </a>
+<header>
+  <a href="index.html">Arthya</a>
   <nav>
-    <a href="/">Home</a>
     <a href="blog.html">Blog</a>
   </nav>
 </header>
 
-<section class="hero">
-  <div class="hero-content">
+<div class="hero">
+  <div class="hero-text">
     <h1>Where Value Finds Purpose</h1>
-    <p>Discover hidden credit card benefits and maximize every swipe.</p>
+    <p>
+      Arthya helps you discover and maximize hidden credit card benefits —
+      so every swipe works for you.
+    </p>
+  </div>
 
-    <form name="early-access" method="POST" data-netlify="true" class="email-form">
+  <div class="hero-card">
+    <h2>Get Early Access</h2>
+    <form name="early-access" method="POST" data-netlify="true">
       <input type="hidden" name="form-name" value="early-access">
       <input type="text" name="name" placeholder="Your Name" required>
       <input type="email" name="email" placeholder="Your Email" required>
-      <button type="submit" class="cta">Get Early Access</button>
+      <button type="submit">Notify Me</button>
+      <br><br>
+      <small>No spam • We respect your privacy</small>
     </form>
-
-    <p class="subtext">No spam. Just curated value.</p>
   </div>
-</section>
+</div>
 
-<div class="divider"></div>
-
-<section class="section">
-  <div class="container">
-    <h2>Most People Leave Money on the Table</h2>
-    <p class="section-text">
-      Banks offer hidden discounts and partner deals —
-      but they’re scattered and rarely used.
-    </p>
-  </div>
-</section>
-
-<section class="section highlight">
-  <div class="container">
-    <h2>How It Works</h2>
-
-    <div class="features">
-      <div class="feature-card">
-        <h3>🔍 We Track Offers</h3>
-        <p>Monitor bank & merchant promotions in one place.</p>
-      </div>
-
-      <div class="feature-card">
-        <h3>💎 We Curate</h3>
-        <p>No spam. Only real high-value benefits.</p>
-      </div>
-
-      <div class="feature-card">
-        <h3>⚡ You Save</h3>
-        <p>Maximize value from cards you already own.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<div class="divider"></div>
-
-<section class="section trust">
-  <h2>Launching Soon for Early Members</h2>
-  <p class="section-text">
-    Join the early circle. Get curated insights before public rollout.
+<section class="trust">
+  <h3>Launching Soon for Early Members</h3>
+  <p>
+    Join the early circle and be the first to access curated credit card insights,
+    hidden benefits, and exclusive financial intelligence.
   </p>
 </section>
 
-<section class="section founder">
-  <div class="container">
-    <h2>The Idea Behind Arthya</h2>
-    <p class="section-text">
-      It started with a ₹1,500 discount at Hush Puppies.
-      I realized most people don’t use benefits they already have.
-      Arthya exists to fix that.
+<section class="founder">
+  <div class="founder-box">
+    <h3>Why Arthya Exists</h3>
+    <p>
+      After saving ₹1,500 at a store simply by checking credit card benefits,
+      I realized most people miss value they already have.
+      Arthya was built to fix that.
     </p>
   </div>
 </section>
 
+<footer>
+  © 2026 Arthya — Where Value Finds Purpose
+</footer>
+
+<!-- Mouse Glow Script -->
+<div class="glow"></div>
 <script>
-const glow = document.querySelector(".mouse-glow");
+const glow = document.querySelector(".glow");
 document.addEventListener("mousemove", e => {
   glow.style.left = e.clientX + "px";
   glow.style.top = e.clientY + "px";
