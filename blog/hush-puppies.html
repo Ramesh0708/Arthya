@@ -2,35 +2,51 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>How I Saved ₹1,500</title>
-<link rel="icon" type="image/png" href="../assets/faviicon.png" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>How I Saved ₹1,500 — Arthya</title>
+  <link rel="icon" type="image/png" href="../assets/favicon.png">
   <link rel="stylesheet" href="../assets/styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
-
 <body>
+  <div class="glow" aria-hidden="true"></div>
 
-<nav class="navbar">
-<a href="/" class="logo">
-  <span>Arthya</span>
-</div>  <div class="nav-links">
-    <a href="../index.html">Home</a>
-    <a href="../blog.html">Blog</a>
-  </div>
-</nav>
+  <header class="site-header">
+    <a href="../index.html" class="brand">
+      <img src="../assets/arthya_logo_transparent.png" alt="Arthya logo">
+      Arthya
+    </a>
+    <nav class="nav-links">
+      <a href="../index.html">Home</a>
+      <a href="../blog.html">Blog</a>
+    </nav>
+  </header>
 
-<section class="hero">
-<div class="blog-card">    <h1>How I Saved ₹1,500 at Hush Puppies</h1>
+  <article class="article">
+    <div class="article-card">
+      <span class="tag-badge">Origin story</span>
+      <h1>How I Saved ₹1,500 at Hush Puppies</h1>
+      <p>
+        I was browsing at a mall when I discovered my credit card had
+        an active offer giving ₹1,500 off instantly.
+      </p>
+      <p>
+        That moment sparked the idea behind Arthya: most people already
+        hold unused value. We just make it visible.
+      </p>
+    </div>
+  </article>
 
-    <p>
-      I was browsing at a mall when I discovered my credit card had
-      an active offer giving ₹1,500 off instantly.
-    </p>
+  <footer class="site-footer">
+    © 2026 Arthya — Where Value Finds Purpose
+  </footer>
 
-    <p>
-      That moment sparked the idea behind Arthya.
-    </p>
-  </div>
-</section>
-
+  <script>
+    const glow = document.querySelector(".glow");
+    document.addEventListener("mousemove", (e) => {
+      glow.style.left = e.clientX + "px";
+      glow.style.top = e.clientY + "px";
+    });
+  </script>
 </body>
 </html>

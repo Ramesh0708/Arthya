@@ -1,135 +1,94 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Arthya Blog</title>
-  <link rel="icon" type="image/png" href="assets/arthya_logo_transparent.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Arthya Blog — Finance Insights</title>
+  <link rel="icon" type="image/png" href="assets/favicon.png">
   <link rel="stylesheet" href="assets/styles.css">
-
-  <style>
-    body {
-      background: radial-gradient(circle at top left, #111633, #070b1a 60%);
-      color: #fff;
-      font-family: system-ui, -apple-system, sans-serif;
-      margin: 0;
-    }
-
-    .blog-container {
-      max-width: 950px;
-      margin: 120px auto;
-      padding: 20px;
-    }
-
-    .blog-card {
-      background: rgba(255,255,255,0.05);
-      backdrop-filter: blur(18px);
-      border: 1px solid rgba(255,255,255,0.1);
-      border-radius: 18px;
-      padding: 30px;
-      margin-bottom: 30px;
-      transition: 0.3s ease;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .blog-card:hover {
-      transform: translateY(-6px);
-      border-color: #6c63ff;
-      box-shadow: 0 10px 40px rgba(108,99,255,0.25);
-    }
-
-    .blog-card h3 {
-      margin-bottom: 12px;
-      font-size: 22px;
-    }
-
-    .blog-card p {
-      opacity: 0.7;
-      line-height: 1.6;
-    }
-
-    .blog-card a {
-      display: inline-block;
-      margin-top: 15px;
-      color: #6c63ff;
-      text-decoration: none;
-      font-weight: 600;
-    }
-
-    .tag-badge {
-      display: inline-block;
-      background: rgba(108,99,255,0.2);
-      color: #a5a1ff;
-      padding: 4px 10px;
-      border-radius: 12px;
-      font-size: 12px;
-      margin-bottom: 10px;
-    }
-
-    .loading {
-      text-align: center;
-      opacity: 0.6;
-    }
-  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <meta name="description" content="Finance insights from Arthya on credit cards, cashback, and value.">
 </head>
-
 <body>
+  <div class="glow" aria-hidden="true"></div>
 
-<header class="navbar">
-  <a href="index.html" class="logo">Arthya</a>
-  <nav>
-    <a href="index.html">Home</a>
-  </nav>
-</header>
+  <header class="site-header">
+    <a href="index.html" class="brand">
+      <img src="assets/arthya_logo_transparent.png" alt="Arthya logo">
+      Arthya
+    </a>
+    <nav class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="blog.html" class="is-active">Blog</a>
+    </nav>
+  </header>
 
-<div class="blog-container">
-  <h1 style="text-align:center; margin-bottom:50px;">Finance Insights</h1>
-  <div id="posts" class="loading">Loading finance articles...</div>
-</div>
+  <div class="blog-wrap">
+    <h1 class="page-title">Finance Insights</h1>
+    <p class="section-text" style="text-align:center; margin: 0 auto 40px;">
+      Notes on value, credit cards, and making every rupee work harder.
+    </p>
+    <div id="posts" class="loading">Loading finance articles...</div>
+  </div>
 
-<script>
-const rssUrl = "https://api.rss2json.com/v1/api.json?rss_url=https://medium.com/feed/@rameshchoudhary8675";
+  <footer class="site-footer">
+    © 2026 Arthya — Where Value Finds Purpose
+  </footer>
 
-fetch(rssUrl)
-  .then(res => res.json())
-  .then(data => {
-    const container = document.getElementById("posts");
-    container.innerHTML = "";
-
-    const financePosts = data.items
-      .filter(post =>
-        post.categories.includes("finance") ||
-        post.categories.includes("credit-card") ||
-        post.categories.includes("cashback") ||
-        post.categories.includes("Arthya")
-      )
-      .slice(0, 6);
-
-    if (financePosts.length === 0) {
-      container.innerHTML = "No finance articles found yet.";
-      return;
-    }
-
-    financePosts.forEach(post => {
-      const div = document.createElement("div");
-      div.className = "blog-card";
-
-      div.innerHTML = `
-        <div class="tag-badge">Finance</div>
-        <h3>${post.title}</h3>
-        <p>${post.pubDate.split(" ")[0]}</p>
-        <p>${post.description.replace(/<[^>]+>/g, '').substring(0, 160)}...</p>
-        <a href="${post.link}" target="_blank">Read on Medium →</a>
-      `;
-
-      container.appendChild(div);
+  <script>
+    const glow = document.querySelector(".glow");
+    document.addEventListener("mousemove", (e) => {
+      glow.style.left = e.clientX + "px";
+      glow.style.top = e.clientY + "px";
     });
-  })
-  .catch(() => {
-    document.getElementById("posts").innerHTML =
-      "Unable to load Medium posts.";
-  });
-</script>
 
+    const rssUrl = "https://api.rss2json.com/v1/api.json?rss_url=https://medium.com/feed/@rameshchoudhary8675";
+
+    fetch(rssUrl)
+      .then((res) => res.json())
+      .then((data) => {
+        const container = document.getElementById("posts");
+        container.innerHTML = "";
+
+        const financePosts = (data.items || [])
+          .filter((post) =>
+            (post.categories || []).some((c) =>
+              ["finance", "credit-card", "cashback", "Arthya"].includes(c)
+            )
+          )
+          .slice(0, 6);
+
+        if (financePosts.length === 0) {
+          container.innerHTML = '<p class="loading">No finance articles found yet. Meanwhile, read the origin story below.</p>';
+          const fallback = document.createElement("div");
+          fallback.className = "blog-card";
+          fallback.innerHTML = `
+            <div class="tag-badge">Origin</div>
+            <h3>How I Saved ₹1,500 at Hush Puppies</h3>
+            <p>The moment that sparked Arthya.</p>
+            <a href="blog/hush-puppies.html">Read story →</a>
+          `;
+          container.appendChild(fallback);
+          return;
+        }
+
+        financePosts.forEach((post) => {
+          const div = document.createElement("div");
+          div.className = "blog-card";
+          const plain = (post.description || "").replace(/<[^>]+>/g, "").substring(0, 160);
+          div.innerHTML = `
+            <div class="tag-badge">Finance</div>
+            <h3>${post.title}</h3>
+            <p>${(post.pubDate || "").split(" ")[0]}</p>
+            <p>${plain}...</p>
+            <a href="${post.link}" target="_blank" rel="noopener">Read on Medium →</a>
+          `;
+          container.appendChild(div);
+        });
+      })
+      .catch(() => {
+        document.getElementById("posts").innerHTML = "Unable to load Medium posts.";
+      });
+  </script>
 </body>
 </html>
