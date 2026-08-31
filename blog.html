@@ -10,6 +10,7 @@
   <meta name="description" content="Finance insights from Arthya on credit cards, cashback, and value.">
 </head>
 <body>
+  <div class="scroll-progress" aria-hidden="true"></div>
   <div class="glow" aria-hidden="true"></div>
 
   <header class="site-header">
@@ -25,7 +26,7 @@
 
   <div class="blog-wrap">
     <h1 class="page-title">Finance Insights</h1>
-    <p class="section-text" style="text-align:center; margin: 0 auto 40px;">
+    <p class="section-text reveal" style="text-align:center; margin: 0 auto 40px;">
       Notes on value, credit cards, and making every rupee work harder.
     </p>
     <div id="posts" class="loading">Loading finance articles...</div>
@@ -35,13 +36,8 @@
     © 2026 Arthya — Where Value Finds Purpose
   </footer>
 
+  <script src="assets/motion.js" defer></script>
   <script>
-    const glow = document.querySelector(".glow");
-    document.addEventListener("mousemove", (e) => {
-      glow.style.left = e.clientX + "px";
-      glow.style.top = e.clientY + "px";
-    });
-
     const rssUrl = "https://api.rss2json.com/v1/api.json?rss_url=https://medium.com/feed/@rameshchoudhary8675";
 
     fetch(rssUrl)
@@ -61,7 +57,7 @@
         if (financePosts.length === 0) {
           container.innerHTML = '<p class="loading">No finance articles found yet. Meanwhile, read the origin story below.</p>';
           const fallback = document.createElement("div");
-          fallback.className = "blog-card";
+          fallback.className = "blog-card reveal";
           fallback.innerHTML = `
             <div class="tag-badge">Origin</div>
             <h3>How I Saved ₹1,500 at Hush Puppies</h3>
@@ -69,12 +65,13 @@
             <a href="blog/hush-puppies.html">Read story →</a>
           `;
           container.appendChild(fallback);
+          window.observeReveals?.([fallback]);
           return;
         }
 
         financePosts.forEach((post) => {
           const div = document.createElement("div");
-          div.className = "blog-card";
+          div.className = "blog-card reveal";
           const plain = (post.description || "").replace(/<[^>]+>/g, "").substring(0, 160);
           div.innerHTML = `
             <div class="tag-badge">Finance</div>
@@ -85,6 +82,7 @@
           `;
           container.appendChild(div);
         });
+        window.observeReveals?.([...container.querySelectorAll(".reveal")]);
       })
       .catch(() => {
         document.getElementById("posts").innerHTML = "Unable to load Medium posts.";

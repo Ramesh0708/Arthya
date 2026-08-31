@@ -39,6 +39,7 @@
   </script>
 </head>
 <body>
+  <div class="scroll-progress" aria-hidden="true"></div>
   <div class="glow" aria-hidden="true"></div>
 
   <header class="site-header">
@@ -53,7 +54,7 @@
   </header>
 
   <section class="hero">
-    <div>
+    <div class="hero-copy">
       <span class="eyebrow">Official brand · Early access</span>
       <h1>Where Value Finds Purpose</h1>
       <p class="lede">
@@ -79,21 +80,21 @@
   </section>
 
   <section class="section narrow center">
-    <h2>Launching Soon for Early Members</h2>
-    <p class="section-text">
+    <h2 class="reveal">Launching Soon for Early Members</h2>
+    <p class="section-text reveal">
       Join the early circle and be the first to access curated credit card insights,
       hidden benefits, and exclusive financial intelligence.
     </p>
     <div class="features">
-      <article class="card">
+      <article class="card reveal reveal-delay-1">
         <h3>Hidden benefits</h3>
         <p>Surface offers you already have — before you pay full price.</p>
       </article>
-      <article class="card">
+      <article class="card reveal reveal-delay-2">
         <h3>Smarter swipes</h3>
         <p>Match the right card to the right purchase in seconds.</p>
       </article>
-      <article class="card">
+      <article class="card reveal reveal-delay-3">
         <h3>Quiet finance</h3>
         <p>Clear, calm guidance. No noise, no spam, no jargon.</p>
       </article>
@@ -101,7 +102,7 @@
   </section>
 
   <section class="founder">
-    <div class="founder-box">
+    <div class="founder-box reveal">
       <h3>Why Arthya Exists</h3>
       <p>
         After saving ₹1,500 at a store simply by checking credit card benefits,
@@ -115,12 +116,6 @@
     © 2026 Arthya — Where Value Finds Purpose
   </footer>
 
-  <script>
-    const glow = document.querySelector(".glow");
-    document.addEventListener("mousemove", (e) => {
-      glow.style.left = e.clientX + "px";
-      glow.style.top = e.clientY + "px";
-    });
-  </script>
+  <script src="assets/motion.js" defer></script>
 </body>
 </html>
